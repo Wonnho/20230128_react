@@ -251,6 +251,7 @@ const ddNumbers = numbers.map((num, i) =>
   numbers[i] % 2 === 0 ? num * 2 : num
 );
 // in short, const ddNumbers = numbers.map((num, i) =>numbers[i] % 2 === 0 ? num * 2 : num) );
+console.log(ddNumbers);
 
 //equivalently,
 let ddNumbers2 = numbers.map((num, idx) => {
@@ -260,4 +261,31 @@ let ddNumbers2 = numbers.map((num, idx) => {
 
 console.log(ddNumbers2);
 
-console.log(ddNumbers);
+// age가 30이상인 객체의 이름값만 배열로 모으기
+
+let userList = [
+  {
+    name: "Seok",
+    age: 31,
+  },
+  { name: "mincheol", age: 20 },
+  { name: "cheolsu", age: 40 },
+];
+
+//mine
+let names = userList.map((name, i) =>
+  userList[i].age > 30 ? userList[i].name : null
+);
+
+console.log(names);
+
+let names1 = userList.filter((user) => user.age >= 30);
+console.log(names1);
+
+let names2 = userList.filter((user) => user.age >= 30);
+let nameList = names2.map((user) => user.name);
+
+console.log(nameList);
+
+let names3 = userList.filter((user) => user.age >= 30).map((user) => user.name); //method chain
+console.log(names3);
