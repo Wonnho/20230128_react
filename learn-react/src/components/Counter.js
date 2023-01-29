@@ -12,7 +12,9 @@ function Counter() {
     setCount((count) => count + 1);
     setCount((count) => count + 1);
     // 콜백함수의 첫번재 인자로 치신 상태값이 전달된다.
+    // useCallback의 의존성을 제거하는데 효과적이다.
   };
+
   return (
     <div>
       <p>{count}</p>
