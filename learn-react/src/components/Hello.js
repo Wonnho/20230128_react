@@ -30,5 +30,9 @@ function Hello({ title, color, backgroundColor, children }) {
     </>
   );
 }
+Hello.defaultProps = {
+  title: "React",
+  color: "green",
+};
 
 export default Hello;
