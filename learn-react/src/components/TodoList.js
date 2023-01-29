@@ -1,20 +1,12 @@
 import { useState } from "react";
 import { useRef } from "react";
 const todoList = [
-  { id: 1, text: "components", done: false },
+  { id: 1, text: "components", done: true },
   { id: 2, text: "State", done: false },
   { id: 3, text: "Array Rendering", done: false },
 ];
 
-// let result=[
-//     <li>component</li>,
-
-//     <li>State</li>,
-
-//     <li>Array Rendering</li>,
-// ];
-
-let result = todoList.map((todo) => <li>{todo.text}</li>);
+//let result = todoList.map((todo) => <li>{todo.text}</li>);
 
 function TodoList() {
   const [todos, setTodos] = useState(todoList);
@@ -49,6 +41,15 @@ function TodoList() {
       setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const handleToggle = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        //if(todo.id===id) return {id:todo.id,text:todo.text,done:!DOMRectReadOnly.done}
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -64,9 +65,23 @@ function TodoList() {
 
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.text}{" "}
-            <button onClick={() => handleRemove(todo.id)}>삭제</button>
+          <li
+            key={todo.id}
+            style={{
+              textDecoration: todo.done && "line-through",
+              userSelect: "none",
+            }}
+            onClick={() => handleToggle(todo.id)}
+          >
+            <span>{todo.text}</span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); //이벤트 전파를 더이상 하지 않는다.
+                handleRemove(todo.id);
+              }}
+            >
+              삭제
+            </button>
           </li>
         ))}
       </ul>
