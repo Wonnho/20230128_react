@@ -1,13 +1,10 @@
 import "./App.css";
-import Counter from "./components/Counter";
 import InputText from "./components/InputText";
-// import Hello from "./components/Hello";
-
+import TodoList from "./components/TodoList";
 function App() {
   return (
     <>
-      <Counter />
-      <InputText />
+      <TodoList />
     </>
   );
 }
