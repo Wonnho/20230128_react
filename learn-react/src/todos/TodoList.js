@@ -1,6 +1,8 @@
-import { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
+import { CountContext } from "../App";
 
 function countUndoneTodo(todos) {
+  console.log("안할 일 세는 중...");
   return todos.filter((todo) => !todo.done).length;
 }
 
@@ -11,6 +13,7 @@ function TodoList({ todos, onRemove, onToggle }) {
   }, [todos]);
 
   console.log(undoneTodo);
+
   return (
     <div>
       <ul>
@@ -28,6 +31,9 @@ function TodoList({ todos, onRemove, onToggle }) {
 }
 
 function TodoItem({ todo, onRemove, onToggle }) {
+  const count = useContext(CountContext);
+  console.log(count);
+
   return (
     <li>
       <span
@@ -41,4 +47,5 @@ function TodoItem({ todo, onRemove, onToggle }) {
   );
 }
 
-export default TodoList;
+//React.memo 컴포넌트가 받는 props가 변경되었을 때만 렌더링이 발생
+export default React.memo(TodoList);
