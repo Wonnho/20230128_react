@@ -10,6 +10,8 @@ import TodoCreate from "./components/TodoCreate";
 import { createGlobalStyle } from "styled-components";
 
 import styled from "styled-components";
+
+import Flex from "./Flex";
 const GlobalStyled = createGlobalStyle`
 *{
   margin:0;
@@ -31,9 +33,10 @@ function App() {
     <div>
       <Container>
         <GlobalStyled />
-        <TodoHeader />
+        {/* <TodoHeader />
         <TodoList />
-        <TodoCreate />
+        <TodoCreate /> */}
+        <Flex />
       </Container>
     </div>
   );

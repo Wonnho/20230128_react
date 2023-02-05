@@ -52,8 +52,16 @@ const StyledButton = styled.div`
   }
 `;
 
-const BigButton = styled(StyledButton)`
+const StyledButton = styled.button`
   width: 200px;
   padding: 20px;
+  border-radius: 15px;
+  border-color: ${({ theme }) => theme.colors.border};
+  color: #fff;
+  text-align: center;
+  outline: none;
+  border: none;
+
+  cursor: pointer;
 `;
 export default Button;

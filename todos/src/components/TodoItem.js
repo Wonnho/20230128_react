@@ -1,5 +1,11 @@
+import styled from "styled-components";
 function TodoItem() {
-  return <li>할일</li>;
+  return <Container>할일</Container>;
 }
 
+const Container = styled.li`
+  padding: 5px 10px;
+  border-radius: 1px solid;
+  border-color: ${({ theme }) => theme.colors.border};
+`;
 export default TodoItem;
