@@ -1,6 +1,8 @@
 .container {
+  $main_color: blue;
+
   border: 1px solid black;
-  height: 200 px;
+  height: calc(200px+100px);
 
   .gnbList {
     display: flex;
