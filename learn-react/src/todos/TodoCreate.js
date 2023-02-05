@@ -1,13 +1,20 @@
-import { useState } from "react";
+import React, { useContext, useState, useRef } from "react";
+//import { TodoDispatchContext } from "./Todos";
+import { useTodoDispatch } from "../context/todos";
+
 function TodoCreate({ onSubmit }) {
   const [text, setText] = useState("");
+  const dispatch = useTodoDispatch();
+
+  const nextId = useRef(4);
+
   const handleText = (e) => setText(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(text);
+    //onSubmit(text);
+    dispatch({ type: "create", id: nextId.current++, text });
   };
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -18,4 +25,4 @@ function TodoCreate({ onSubmit }) {
   );
 }
 
-export default TodoCreate;
+export default React.memo(TodoCreate);
