@@ -1,0 +1,13 @@
+.container {
+  border: 1px solid black;
+  height: 200 px;
+}
+.container .gnbList {
+  display: flex;
+}
+.container .gnbList li {
+  color: red;
+}
+.container .gnbList li:hover {
+  background-color: black;
+}/*# sourceMappingURL=style.css.map */
