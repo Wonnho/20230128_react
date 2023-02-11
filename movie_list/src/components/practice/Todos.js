@@ -87,7 +87,7 @@ function Todos() {
 
   return (
     <div>
-      {todos[1].text}
+      {/* {todos[1].text} */}
       <div>
         <input type="text" onChange={(e) => setText(e.target.value)} />
         <button onClick={handleSubmit}>등록</button>
