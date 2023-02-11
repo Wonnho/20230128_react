@@ -1,0 +1,14 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "text": "Todos component 만들기",
+      "done": true
+    },
+    {
+      "id": 2,
+      "text": "json server로 연동 연습",
+      "done": false
+    }
+  ]
+}
