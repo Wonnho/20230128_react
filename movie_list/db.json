@@ -8,7 +8,12 @@
     {
       "id": 2,
       "text": "json server로 연동 연습",
-      "done": false
+      "done": true
+    },
+    {
+      "text": "엑시오스",
+      "done": false,
+      "id": 3
     }
   ]
 }

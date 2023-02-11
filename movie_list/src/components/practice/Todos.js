@@ -8,6 +8,9 @@ function Todos() {
     data: null,
     isError: false,
   });
+
+  const [data,isLoading,isError]=todos; //destruction
+
   const fetchData = async () => {
     //await: Promise? resolve가 되기 전까지 다음 코드가 실행되지 않는다.
     const res = await fetch("http://localhost:5000/todos");
@@ -16,7 +19,7 @@ function Todos() {
 
     setTodos({
       isLoading: false,
-      data: null,
+      data,
       isError: false,
     });
   };
@@ -82,8 +85,8 @@ function Todos() {
     fetchData();
   }, []);
 
-  if (todos.isLoading) return <div> loading....</div>;
-  if (todos.isError) return <div> Error occurs!!!</div>;
+  if (isLoading) return <div> loading....</div>; //due to destruction
+  if (isError) return <div> Error occurs!!!</div>;
 
   return (
     <div>
