@@ -15,5 +15,30 @@
       "done": false,
       "id": 3
     }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post subject 1",
+      "body": " 글 내용 1",
+      "authoer": "Jenkins"
+    },
+    {
+      "id": 2,
+      "title": "Post subject 2",
+      "body": " 글 내용 2",
+      "authoer": "Jenkins"
+    },
+    {
+      "id": 3,
+      "title": "Post subject 3",
+      "body": " 글 내용 3",
+      "authoer": "Jenkins"
+    },
+    {
+      "title": "Axios",
+      "body": "async",
+      "id": 4
+    }
   ]
 }
