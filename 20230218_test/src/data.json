@@ -1,0 +1,20 @@
+{
+    
+ "todos":[
+    {
+        "id":1,
+        "content":"청소",
+        "YesNo":"true"
+    },
+    {
+        "id":2,
+        "content":"요리",
+        "YesNo":"true"
+    },
+    {
+        "id":3,
+        "content":"체조",
+        "YesNo":"false"
+    }
+ ]
+}
