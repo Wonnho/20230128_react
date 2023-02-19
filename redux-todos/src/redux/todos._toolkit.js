@@ -1,6 +1,6 @@
 //
 
-import { createAction } from "@reduxjs/toolkit";
+import { createAction, createReducer } from "@reduxjs/toolkit";
 import produce from "immer";
 import { nanoid } from "@reduxjs/toolkit";
 //createAction: 액션의 타입과 액션 생성함수를 동시에 만든다.
@@ -19,6 +19,28 @@ export const createTodo = createAction("todos/create", function (text) {
 
 export const removeTodo=createAction("todos/remove");
 export const toggleTodo=createAction("todos/toggle");
+
+
+export const todoReducer=createReducer([],(builder)=>{
+    builder.addCase(createTodo, (state,action)=>{
+    //immer가 자동으로 적용된다:불변성 유지
+        state.push(action.payload);
+    })
+    .addCase(removeTodo,(state,action)=>{
+       //해당 아이디의 todo의 index값 구해서 splice로 원본에서 추출   
+        const index=state.findIndex(todo=>todo.id===action.payload);
+        state.splice(index,1);
+    })
+
+    .addCase(toggleTodo,(state,action)=>{
+        const todo=state.find(todo=>todo.id===action.payload);
+        todo.done=!todo.done;
+    });
+
+});
+
+
+
 
 export function todoToolkitReducer(state = [], action) {
   switch (action.type) {
