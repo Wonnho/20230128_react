@@ -1,7 +1,7 @@
 function TodoHeader() {
     return(
         <div>
-            <h2>todo lsit</h2>
+            <h2>todo list</h2>
 
         </div>
     )
