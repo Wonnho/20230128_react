@@ -1,7 +1,16 @@
-function TodoHeader() {
+import TodoList from "./TodoList";
+import TodoInput from "./TodoInput";
+import TodoHeader from "./TodoHeaders";
+
+function Todos() {
     return(
         <div>
-            <h2></h2>
+           <TodoHeader/>
+           <TodoList/>
+           <TodoInput/>
+
         </div>
     )
 }
+
+export default Todos;

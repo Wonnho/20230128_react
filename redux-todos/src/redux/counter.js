@@ -11,12 +11,12 @@ export const decrease = (amount) => {
 };
 
 export const increase = (amount) => {
-    return {
-      type: INCREASE,
-      amount,
-    };
+  return {
+    type: INCREASE,
+    amount,
   };
-  
+};
+
 export const counterReducer = (state = 0, action) => {
   switch (action.type) {
     case INCREASE:

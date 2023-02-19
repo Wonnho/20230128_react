@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import "./App.css";
 import { counterReducer } from "./redux/counter";
 import Counter from "./components/Counter";
+import Todos from "./components/Todos.jsx";
 const store = configureStore({
   reducer: {
     //속성 이름이 상태값의 이름이 된다.
@@ -12,7 +13,7 @@ const store = configureStore({
 function App() {
   return (
     <Provider store={store}>
-      <Counter />
+    <Todos/>
     </Provider>
   );
 }

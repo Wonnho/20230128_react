@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { decrease, increase } from "../redux/counter";
 
 function getState(state) {
   return state.counter;
