@@ -19,9 +19,20 @@ const todoSlice = createSlice({
         };
       },
     },
+      toggleTodo(state,action){
+        const todo=state.find((todo)=>todo.id===action.payload);
+        todo.done=!todo.done;
+      },
+      removeTodo(state,action) {
+        return state.filter((todo)=>todo.id!==action.payload);
+        //기존배열을 바꾸는게 아니니가 return을 넣어주어야 한다.
+      },
+    
   },
 });
 
-export const { createTodo } = todoSlice.actions;
+
+
+export const { createTodo,toggleTodo,removeTodo } = todoSlice.actions;
 
 export const todoReducer = todoSlice.reducer;
