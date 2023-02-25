@@ -2,8 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.header`
-padding: 10px 20px;
-border-bottom: 1px solid #bbb;
+  padding: 10px 20px;
+  border-bottom: 1px solid #bbb;
 `;
 
 const Wrapper = styled.div`
@@ -32,6 +32,7 @@ const navList = [
   { id: 2, text: "TV", url: "/tv" },
 
   { id: 3, text: "people", url: "/people" },
+  { id: 4, text: "Home", url: "/" },
 ];
 
 function Header() {
@@ -41,11 +42,16 @@ function Header() {
   return (
     <Container>
       <Wrapper>
-        <Logo><Link to="/">NeppMovie</Link></Logo>
+        <Logo>
+          <Link to="/">NeppMovie</Link>
+        </Logo>
         <Gnb>
           <ul>
             {navList.map((nav) => (
-              <li  key={nav.id} style={{ fontWeight: pathname === nav.url && 700 }}>
+              <li
+                key={nav.id}
+                style={{ fontWeight: pathname === nav.url && 700 }}
+              >
                 <Link to={nav.url}>{nav.text}</Link>
               </li>
             ))}
