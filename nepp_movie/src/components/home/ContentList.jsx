@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
+import { tmdbAxios } from "../../api/tmdb";
+import ContentItem from "./ContentItem";
+
 function ContentList({ title, initalState }) {
+  //filters의 값이 바꾸리 때마다 get 요청 다시
+  //=>active가 true인 filter의 url 이용
+  //=>특정 값이 바뀔 때 마다 실행
+
   const [filters, setFilters] = useState(initalState);
+
+  const [items, setItems] = useState([]);
 
   const handleToggle = (id) => {
     setFilters(
@@ -13,6 +22,26 @@ function ContentList({ title, initalState }) {
       )
     );
   };
+
+  const fetchData = async (url) => {
+    //  const res = await tmdbAxios.get("/trending/movie/week");
+
+    //const results=res.data.results
+
+    const {
+      data: { results },
+    } = await tmdbAxios.get(url);
+
+    //const { results } = res.data;
+
+    setItems(results);
+    //  console.log(results);
+  };
+
+  useEffect(() => {
+    const { url } = filters.find((filter) => filter.active);
+    fetchData(url);
+  }, [filters]);
 
   return (
     <div>
@@ -31,6 +60,13 @@ function ContentList({ title, initalState }) {
             ))}
           </FilterList>
         </ContentHeader>
+        <ContentWrapper>
+          {items.map((item) => (
+            <li>
+              <ContentItem key={item.id} item={item} />
+            </li>
+          ))}
+        </ContentWrapper>
       </Container>
     </div>
   );
@@ -62,6 +98,13 @@ const FilterItem = styled.li`
       background-color: black;
       color: #fff;
     `}
+`;
+
+const ContentWrapper = styled.ul`
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
 `;
 
 export default ContentList;

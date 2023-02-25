@@ -43,7 +43,7 @@ function Header() {
     <Container>
       <Wrapper>
         <Logo>
-          <Link to="/">NeppMovie</Link>
+          <Link to="/">TBDB</Link>
         </Logo>
         <Gnb>
           <ul>

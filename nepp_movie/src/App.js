@@ -12,20 +12,21 @@ function App() {
     <div className="App">
       <Header />
       <MainSection>
-      <Routes>
-      <Route path="/" element={<Home />} />
-        <Route path="movie" element={<Movie />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="movie" element={<Movie />} />
 
-        <Route path="tv" element={<TV/>} />
-        <Route path="people" element={<People />} />
-      </Routes>
+          <Route path="tv" element={<TV />} />
+          <Route path="people" element={<People />} />
+        </Routes>
       </MainSection>
     </div>
   );
 }
 
-const MainSection=styled.div`
-max-width:900px;
-margin: 0 auto`;
+const MainSection = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+`;
 
 export default App;
