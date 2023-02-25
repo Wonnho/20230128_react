@@ -7,6 +7,8 @@ import TV from "./components/pages/TV";
 import Home from "./components/pages/Home";
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
+import MovieDetail from "./components/movie/MovieDetail";
+import MovieList from "./components/movie/MovieList";
 function App() {
   return (
     <div className="App">
@@ -14,7 +16,10 @@ function App() {
       <MainSection>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="movie" element={<Movie />} />
+          <Route path="movie" element={<Movie />}>
+            <Route path="" element={<MovieList />} />
+            <Route path=":id" element={<MovieDetail />} />
+          </Route>
 
           <Route path="tv" element={<TV />} />
           <Route path="people" element={<People />} />

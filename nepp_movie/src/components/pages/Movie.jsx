@@ -1,12 +1,13 @@
-function Movie() {
-    return(
-        <div>
-            <h1>Movie</h1>
+import { Outlet } from "react-router-dom";
 
-             
-        
-        </div>
-    )
+function Movie() {
+  return (
+    <div>
+      <h1>Movie</h1>
+
+      <Outlet />
+    </div>
+  );
 }
 
 export default Movie;
