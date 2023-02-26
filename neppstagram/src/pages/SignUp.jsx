@@ -1,47 +1,58 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { signUp } from "../api/auth";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import useInputs from "../hooks/useInputs";
-function SignUp() {
 
-  const initialState = {
-    users: [
-      {
-        id: 1,
-        username: 'velopert',
-        email: 'public.velopert@gmail.com',
-        active: true
-      },
-      {
-        id: 2,
-        username: 'tester',
-        email: 'tester@example.com',
-        active: false
-      },
-      {
-        id: 3,
-        username: 'liz',
-        email: 'liz@example.com',
-        active: false
-      }
-    ]
+function SignUp() {
+  const [inputs, handleInputs] = useInputs({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { success } = await signUp(inputs);
+    if (success) {
+      alert("succeeded signUp");
+      navigate("/auth/login");
+    }
   };
 
-  const {update,setUpdate}=useInputs(initialState);
   return (
     <Container>
       <h2>SignUp</h2>
-      <InputWrapper>
-        <Input type="text" placeholder="이름을 입력하세요" 
-        onChange={setUpdate}
-        />
-        <Input type="email" placeholder="email" />
-        <Input type="password" placeholder="passowrd" />
-      </InputWrapper>
-      <BtnWrapper>
-        <Button>회원가입</Button>
-        <Button bgColor="red">취소</Button>
-      </BtnWrapper>
+      <form onSubmit={handleSubmit}>
+        <InputWrapper>
+          <Input
+            type="text"
+            placeholder="이름을 입력하세요"
+            name="name"
+            onChange={handleInputs}
+          />
+          <Input
+            type="email"
+            placeholder="email"
+            name="email"
+            onChange={handleInputs}
+          />
+          <Input
+            type="password"
+            placeholder="패스워드를 입력해주세요."
+            name="password"
+            onChange={handleInputs}
+            //autoComplete={"false"}
+          />
+        </InputWrapper>
+        <BtnWrapper>
+          <Button>회원가입</Button>
+          <Button bgColor="red" type="button" onClick={()=>navigate("/auth/login")}>취소</Button>
+        </BtnWrapper>
+      </form>
     </Container>
   );
 }
