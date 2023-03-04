@@ -25,5 +25,7 @@ export const getPosts = async (page) => {
 export const getPostById=async(id)=>{
     const {data}=await postAxios.get(id,);
     return data;
-    
+
 }
+
+
