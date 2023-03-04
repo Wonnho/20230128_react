@@ -1,22 +1,34 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { getCurrentUser } from "../api/auth";
-import { useSelector } from "react-redux";
+import { getCurrentUser, patchProfile } from "../api/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../redux/user";
 
 function Profile() {
-  const {user,isLoading}=useSelector((state)=>state.user);
+  const { user, isLoading } = useSelector((state) => state.user);
 
   console.log(user);
-  // useEffect(()=>{
-  //   getCurrentUser().then((res)=>console.log(res));
-  // })
-  
-  if(isLoading) return<div>불러오는 중.....</div>
+  const dispatch = useDispatch();
+
+  if (isLoading) return <div>불러오는 중.....</div>;
+
+  const handleProfile = async (e) => {
+    const data = await patchProfile(e.target.files[0]);
+    dispatch(fetchUser(data));
+  };
   return (
     <Container>
-      <ImgBox></ImgBox>
+      <ImgBox htmlFor="profile">
+        <img src={user.profile_url} alt="" />
+      </ImgBox>
+      <input
+        type="file"
+        accept="image/*"
+        id="profile"
+        style={{ display: "none" }}
+        onChange={handleProfile}
+      />
       <UserName>{user.name}</UserName>
-      Profile
     </Container>
   );
 }
@@ -27,13 +39,20 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  flex:1;
+  flex: 1;
 `;
 
-const ImgBox = styled.div`
+const ImgBox = styled.label`
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+
   width: 200px;
   height: 200px;
   border: 2px solid #eee;
+  border-radius: 50%;
+  cursor: pointer;
 `;
 
 const UserName = styled.h3``;

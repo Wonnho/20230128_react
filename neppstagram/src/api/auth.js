@@ -49,3 +49,21 @@ export const getCurrentUser = async () => {
     return data;
   } catch (e) {}
 };
+
+
+export const patchProfile=async(file)=>{
+  try {
+
+    //file을 서버에 보내기 위해서 FormData를 이용
+
+    const  form=new FormData();
+    //
+    form.append("profile",file);
+
+    const {data}=await authAxios.patch("/profile",form);
+    return data;
+
+  }catch(e) {
+    console.log(e);
+  }
+}
