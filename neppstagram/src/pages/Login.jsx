@@ -6,6 +6,8 @@ import Input from "../components/common/Input";
 import useInputs from "../hooks/useInputs";
 
 function Login() {
+  const token = localStorage.getItem("token");
+
   const [inputs, handleInputs] = useInputs({
     name: "",
     password: "",
@@ -18,11 +20,19 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { token } = await login(inputs);
-   if(token) {
-    navigate("/");
-   }
-   
+    if (token) {
+      navigate("/");
+    }
   };
+
+  
+  if(token) return <navigate to="/" />;
+
+  // if (token) {
+  //   navigate("/");
+  // }
+
+ 
 
   return (
     <Container>

@@ -46,5 +46,6 @@ export const getCurrentUser = async () => {
     //         });
 
     console.log(data);
+    return data;
   } catch (e) {}
 };
