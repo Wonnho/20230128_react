@@ -21,3 +21,9 @@ export const getPosts = async (page) => {
     console.log(e);
   }
 };
+
+export const getPostById=async(id)=>{
+    const {data}=await postAxios.get(id,);
+    return data;
+    
+}

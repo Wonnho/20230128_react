@@ -8,6 +8,7 @@ import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Post from "./pages/Post";
 function App() {
   return (
     <div>
@@ -22,6 +23,7 @@ function App() {
           <Route path="search" element={<Search />} />
           <Route path="edit" element={<Edit />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="posts/:id" element={<Post />} />
         </Route>
       </Routes>
     </div>

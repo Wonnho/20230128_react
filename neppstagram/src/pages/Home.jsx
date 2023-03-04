@@ -1,4 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { getPosts } from "../api/post";
 
 function Home() {
@@ -28,15 +30,37 @@ function Home() {
   if (isLoading) return <div>is loading...</div>;
   return (
     <div>
-      <ul>
+      <PostList>
         {data.map((item) => (
-          <li>
-            <img src={item.img_list[0].url} alt="" />
-          </li>
+          <PostItem>
+            <Link to={`/posts/${item.id}`}>
+              <img src={item.img_list[0].url} alt="" />
+            </Link>
+          </PostItem>
         ))}
-      </ul>
+      </PostList>
     </div>
   );
 }
+
+const PostList = styled.ul`
+  display: flex;
+  flex-wrap: wrap; //넘어가는 영역을 줄바꿈함
+`;
+
+const PostItem = styled.li`
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+`;
 
 export default Home;
