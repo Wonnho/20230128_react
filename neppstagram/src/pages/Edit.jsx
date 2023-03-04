@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { createPost } from "../api/post";
+import { useNavigate } from "react-router-dom";
 
 function Edit() {
   const [inputs, setInputs] = useState({
     files: [],
     body: "",
   });
+
+  const navigate = useNavigate();
 
   const handleBody = (e) => {
     setInputs({
@@ -16,13 +20,22 @@ function Edit() {
   const handleFiles = (e) => {
     setInputs({
       ...inputs,
-      files: e.target.value,
+      files: e.target.files,
     });
   };
 
   //console.log(e);
 
+  const handleSubmit = async () => {
+    const { files, body } = inputs;
+    const data = await createPost(files, body);
+    console.log(data);
 
+    if (data) {
+      alert("게시물이 등록되었습니다.");
+    }
+    navigate(`/posts/${data.id}`);
+  };
 
   return (
     <div>
@@ -36,7 +49,7 @@ function Edit() {
         row="10"
         onChange={handleBody}
       ></textarea>
-      <button>등록</button>
+      <button onClick={handleSubmit}>등록</button>
     </div>
   );
 }

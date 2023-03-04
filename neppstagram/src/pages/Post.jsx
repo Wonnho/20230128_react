@@ -1,4 +1,3 @@
-import { findAllByDisplayValue } from "@testing-library/react";
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { getPostById } from "../api/post";
@@ -48,8 +47,8 @@ function Post() {
             ))}
           </SlideList>
         </SlideBox>
-        <button onClick={handleIndex(-1)}>-1</button>
-        <button onClick={handleIndex(+1)}>+1</button>
+        <button onClick={() => handleIndex(-1)}>-1</button>
+        <button onClick={() => handleIndex(+1)}>+1</button>
         <UserProfileBox user={data.author} />
         <p>{data.body}</p>
       </Wrapper>
